@@ -15,15 +15,21 @@
          Home,
          PublicarVaga
       },
+
+      data: ()=>({
+         teste: 'O componente foi criado'
+      }),
+
       beforeCreate(){
-         console.log('Antes de criar')
+         console.log('Antes de criar', this.teste)
+         //sem sucesso ao acessar teste, pois a propriedades reativas ainda não foram criadas
       },
       created(){
-         console.log('Criado')
+         console.log('Criado',this.teste)
       },
       beforeMount(){
-         console.log('Antes de montar')
-      },
+         console.log('Antes de montar o template')
+      },/*
       mounted(){
          console.log('Montado')
       },
@@ -53,7 +59,7 @@
       },
       deactivated(){
          console.log('Componente é desativado');
-      }
+      }*/
    };
 </script>
 
