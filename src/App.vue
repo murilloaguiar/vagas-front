@@ -1,5 +1,7 @@
 <template>
    <div>
+      <h1>Componente App</h1>
+      
       <topo-padrao />
       <conteudo></conteudo>
    </div>
@@ -7,8 +9,8 @@
 </template>
 
 <script>
-import Conteudo from "./components/layouts/Conteudo.vue";
-import TopoPadrao from "./components/layouts/TopoPadrao.vue";
+import Conteudo from "@/components/layouts/Conteudo.vue";
+import TopoPadrao from "@/components/layouts/TopoPadrao.vue";
 
 export default {
    name: "App",
@@ -19,6 +21,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>
