@@ -1,6 +1,6 @@
 <template>
   <div>
-      <p>Publicar vaga</p>
+      <h1>Componente Publicar Vaga</h1>
   </div>
 </template>
 

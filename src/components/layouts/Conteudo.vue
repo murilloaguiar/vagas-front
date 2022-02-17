@@ -1,8 +1,18 @@
 <template>
   <div>
-      <h1>Componente Conteudo</h1>
-      <home></home>
-      <publicar-vaga></publicar-vaga>
+      <h1>{{titulo}}</h1>
+      <button @click="atualizarComponente()">Atualizar</button>
+      <button @click="conteudo = 'home'">Home</button>
+      <button @click="conteudo = 'publicar-vaga'">Publicar Vaga</button>
+      <!-- renderizar de modo dinâmico os componentes home e publicar-vaga e colocando eles em cache, preservando suas instâncias -->
+      <keep-alive>
+         <component :is="conteudo"/>
+      </keep-alive>
+      
+
+      <!-- <home></home>
+      <publicar-vaga></publicar-vaga> -->
+
   </div>
 </template>
 
@@ -17,9 +27,17 @@
       },
 
       data: ()=>({
-         teste: 'O componente foi criado'
+         conteudo: 'home',
+         teste: 'O componente foi criado',
+         titulo: 'Componente Conteudo'
       }),
 
+      methods: {
+         atualizarComponente(){
+            this.titulo+='*'
+         }
+      },
+      /*
       beforeCreate(){
          console.log('Antes de criar', this.teste)
          //sem sucesso ao acessar teste, pois a propriedades reativas ainda não foram criadas
@@ -29,7 +47,7 @@
       },
       beforeMount(){
          console.log('Antes de montar o template')
-      },/*
+      },
       mounted(){
          console.log('Montado')
       },
