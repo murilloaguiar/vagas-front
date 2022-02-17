@@ -1,5 +1,6 @@
 <template>
    <div class="container py-4">
+
       <div class="row">
 
          <div class="col">
@@ -12,21 +13,32 @@
 
       <div class="row mt-5">
 
+         <div class="col">
+
+            <vaga></vaga>
+
+         </div>
+
+      </div>
+
+      <div class="row mt-5">
+
          <div class="col-4">
 
-            <indicador titulo="Vagas abertas" indicador="100"></indicador>
+            <indicador titulo="Vagas abertas" indicador="100" bg="bg-dark" color="text-white"></indicador>
 
          </div>
 
          <div class="col-4">
 
-            <indicador titulo="Profissionais cadastrados" indicador="225"></indicador>
+            <indicador titulo="Profissionais cadastrados" indicador="225" bg="bg-dark" color="text-white"></indicador>
 
          </div>
 
          <div class="col-4">
 
-            <indicador titulo="Visitantes online" indicador="25"></indicador>
+            <indicador titulo="Visitantes online" :indicador="usuariosOnline" bg="bg-light" color="text-dark"></indicador>
+            
 
          </div>
 
@@ -40,18 +52,33 @@
 
    import Indicador from '@/components/comuns/Indicador.vue'
    import PesquisarVaga from '@/components/comuns/PesquisarVaga.vue'
+   import Vaga from '@/components/comuns/Vaga.vue'
+
 
    export default {
       name: 'Home',
+
       components:{
          PesquisarVaga,
-         Indicador
+         Indicador,
+         Vaga
+      },
+
+      data: ()=>({
+         usuariosOnline: 0
+      }),
+
+      methods:{
+         getUsuariosOnline(){
+            this.usuariosOnline = Math.floor(Math.random()*101)
+         }
       },
 
       //-----Hooks
       created(){
          console.log('Criado',this.teste)
-      },
+         setInterval(this.getUsuariosOnline, 2000);
+      },/*
       activated(){
          console.log('Componente é ativado')
       },
@@ -63,7 +90,7 @@
       },
       unmounted(){
          console.log('Desmontado/detruido')
-      }
+      }*/
    };
 </script>
 
