@@ -4,65 +4,29 @@
 
          <div class="col">
 
-            <div class="h-100 p-5 bg-light border rounded-3">
-               <h2>Pesquisar vagas</h2>
+            <pesquisar-vaga></pesquisar-vaga>
 
-               <div class="row">
+         </div>
 
-                  <div class="col">
+      </div>
 
-                     <div class="form-group">
-                        <label for="inputPesquisa">Titulo da vaga</label>
-                        <input type="text" id="inputPesquisa" class="form-control" placeholder="Pesquise por palavras chaves">
-                        <small class="text-muted form-text">Informe palavras que estejam relacionadas com o título da vaga</small>
-                     </div>
-                     
-                  </div>
+      <div class="row mt-5">
 
-               </div>
+         <div class="col-4">
 
-               <div class="row">
+            <indicador titulo="Vagas abertas" indicador="100"></indicador>
 
-                  <div class="col">
+         </div>
 
-                     <button class="btn btn-outline-dark mt-2">Buscar</button>
+         <div class="col-4">
 
-                  </div>
+            <indicador titulo="Profissionais cadastrados" indicador="225"></indicador>
 
-               </div>
+         </div>
 
-               <div class="row mt-5">
+         <div class="col-4">
 
-                  <div class="col-4">
-
-                     <div class="h-100 p-5 rounded-3 border bg-dark text-white">
-                        <p>Vagas Abertas</p>
-                        <h2>25</h2>
-                     </div>
-
-                  </div>
-
-                  <div class="col-4">
-
-                     <div class="h-100 p-5 rounded-3 border bg-dark text-white">
-                        <p>Profissionais cadastrados</p>
-                        <h2>125</h2>
-                     </div>
-
-                  </div>
-
-                  <div class="col-4">
-
-                     <div class="h-100 p-5 rounded-3 border bg-light text-dark">
-                        <p>Visitantes online</p>
-                        <h2>15</h2>
-                     </div>
-
-                  </div>
-
-               </div>
-
-            </div>
+            <indicador titulo="Visitantes online" indicador="25"></indicador>
 
          </div>
 
@@ -73,8 +37,18 @@
 </template>
 
 <script>
+
+   import Indicador from '@/components/comuns/Indicador.vue'
+   import PesquisarVaga from '@/components/comuns/PesquisarVaga.vue'
+
    export default {
       name: 'Home',
+      components:{
+         PesquisarVaga,
+         Indicador
+      },
+
+      //-----Hooks
       created(){
          console.log('Criado',this.teste)
       },
