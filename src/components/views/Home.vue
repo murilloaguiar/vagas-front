@@ -15,14 +15,16 @@
 
          <div class="col">
             
-            <vaga 
+            <!-- <vaga 
                :titulo-vaga-teste="vaga.titulo"
                :descricao-vaga="vaga.descricao"
                :salario="vaga.salario"
                :modalidade="vaga.modalidade"
                :tipo="vaga.tipo"
                :publicacao="vaga.publicacao"
-            />
+            /> -->
+
+            <vaga v-bind="vaga" />
 
          </div>
 
@@ -81,7 +83,7 @@
                modalidade: 'Home Office',
                tipo: 'PJ',
                publicacao: '2021-10-10'
-            },/*
+            },
             {
                titulo: 'Programador JavaScript Angular',
                descricao: 'Profissional com conhecimentos avançados em JavaScript e Angular.',
@@ -113,7 +115,7 @@
                modalidade: 'Presencial',
                tipo: 'CLT',
                publicacao: '2021-10-05'
-            }*/
+            }
          ]
       }),
 

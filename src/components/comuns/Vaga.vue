@@ -2,11 +2,11 @@
    <div class="card">
 
       <div class="card-header bg-dark text-white">
-         {{tituloVagaTeste}}
+         {{titulo}}
       </div>
 
       <div class="card-body">
-         <p>{{descricaoVaga}}</p>
+         <p>{{descricao}}</p>
       </div>
 
       <div class="card-footer">
@@ -24,7 +24,7 @@
 
       //tipando as props
       props: {
-         tituloVagaTeste: {
+         titulo: {
             type: String,
             required: true,
             validator(p){
@@ -33,9 +33,12 @@
                return true
             }
          },
-         descricaoVaga: {
+         descricao: {
             type: String,
-            required: true
+            //default: 'O contratante não informou uma descrição para essa vaga'
+            default(){
+               return '*'.repeat(20)
+            }
          },
          salario: {
             type: [Number, String],
