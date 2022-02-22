@@ -1,15 +1,17 @@
 <template>
    <div>
-      <h1>Componente App</h1>
-      <button @click="desmontarComponente()">Desmontar o componente conteudo</button>
-      <!-- <topo-padrao @eventoParaPai="acao($event)" /> -->
+
+      <!--<button @click="desmontarComponente()">Desmontar o componente conteudo</button>
+      <topo-padrao @eventoParaPai="acao($event)" /> -->
 
       <!-- executando a função enviada como callback no componente filho 
       <topo-padrao @eventoParaPai="$event('Texto 1', 125)" />-->
 
-      <topo-padrao :funcaoCallback="acao"/>
+      <!-- <topo-padrao :funcaoCallback="acao"/> -->
+
+      <topo-padrao @navegar="componente = $event"/>
       
-      <conteudo v-if="visibilidade"></conteudo>
+      <conteudo v-if="visibilidade" :conteudo="componente"></conteudo>
    </div>
 
 </template>
@@ -25,18 +27,20 @@ export default {
       TopoPadrao,
    },
    data: ()=>({
-      visibilidade: true
+      visibilidade: true,
+      componente: 'Home'
    }),
-   methods:{
-      desmontarComponente(){
-         this.visibilidade = false
-      },
-      acao(/*event*/ p1, p2){
-         //console.log(event.msg)
-         console.log('função de callback definida no componente pai e chamada no componente filho')
-         console.log(p1, p2)
-      }
-   }
+
+   // methods:{
+   //    desmontarComponente(){
+   //       this.visibilidade = false
+   //    },
+   //    acao(/*event*/ p1, p2){
+   //       //console.log(event.msg)
+   //       console.log('função de callback definida no componente pai e chamada no componente filho')
+   //       console.log(p1, p2)
+   //    }
+   // }
 }
 </script>
 

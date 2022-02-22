@@ -19,12 +19,16 @@
             <li class="nav-item">
                <!-- <a class="nav-link" href="#" @click="navegarPara()">Home</a> -->
 
-               <a class="nav-link" href="#" @click="funcaoCallback('Teste 1', 200)">Home</a>
+               <!-- <a class="nav-link" href="#" @click="funcaoCallback('Teste 1', 200)">Home</a> -->
+
+               <a class="nav-link" href="#" @click="navegarPara('Home')">Home</a>
             </li>
             <li class="nav-item">
                <!-- <a class="nav-link" href="#" @click="navegarPara()">Publicar vaga</a> -->
 
-               <a class="nav-link" href="#" @click="funcaoCallback('Teste 2', 300)">Publicar vaga</a>
+               <!-- <a class="nav-link" href="#" @click="funcaoCallback('Teste 2', 300)">Publicar vaga</a> -->
+
+               <a class="nav-link" href="#" @click="navegarPara('PublicarVaga')">Publicar vaga</a>
             </li>
          </ul>
 
@@ -38,9 +42,15 @@
 export default {
    name: "Topo", //definindo manualmente o nove do componente
 
-   props:{
+   methods:{
+      navegarPara(componente){
+         this.$emit('navegar', componente)
+      }
+   }
+
+   /*props:{
       funcaoCallback: Function
-   },
+   },*/
 
    /*methods:{
       navegarPara(){
