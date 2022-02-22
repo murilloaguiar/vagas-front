@@ -60,7 +60,7 @@
       </div>
 
       <div class="row mt-3">
-         {{titulo}} | {{descricao}} | {{salario}} | {{modalidade}} | {{tipo}}
+         
          <div class="col">
             <button type="submit" class="btn btn-primary" @click="salvarVaga()">Cadastrar</button>
          </div>
@@ -87,16 +87,20 @@
 
             let vagas = JSON.parse(localStorage.getItem('vagas')) ?? []
 
+            let tempoDecorrido = Date.now()
+            let dataAtual = new Date(tempoDecorrido)
+            
             vagas.push({
                titulo: this.titulo,
                descricao: this.descricao,
                salario: this.salario,
                modalidade: this.modalidade,
-               tipo: this.tipo
+               tipo: this.tipo,
+               publicacao: dataAtual.toISOString() //timezone UTC
             })
             
-            // console.log(vaga)
-            // console.log(JSON.stringify(vaga))
+            // console.log(vagas)
+            // console.log(JSON.stringify(vagas))
             // convertendo o objeto em uma string
             localStorage.setItem('vagas', JSON.stringify(vagas));
             
