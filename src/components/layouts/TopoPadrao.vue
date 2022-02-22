@@ -17,10 +17,14 @@
 
          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-               <a class="nav-link" href="#">Home</a>
+               <!-- <a class="nav-link" href="#" @click="navegarPara()">Home</a> -->
+
+               <a class="nav-link" href="#" @click="funcaoCallback('Teste 1', 200)">Home</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="#">Publicar vaga</a>
+               <!-- <a class="nav-link" href="#" @click="navegarPara()">Publicar vaga</a> -->
+
+               <a class="nav-link" href="#" @click="funcaoCallback('Teste 2', 300)">Publicar vaga</a>
             </li>
          </ul>
 
@@ -32,7 +36,26 @@
 
 <script>
 export default {
-  name: "Topo", //definindo manualmente o nove do componente
+   name: "Topo", //definindo manualmente o nove do componente
+
+   props:{
+      funcaoCallback: Function
+   },
+
+   /*methods:{
+      navegarPara(){
+         //console.log('chegamos até aqui')
+         //enviando um objeto
+         //this.$emit('eventoParaPai', {msg:'dando um oi para o componente pai'})
+
+         //enviando uma função de callback para ser usada no componente pai como $event()
+         this.$emit('eventoParaPai',
+            (parametro1, parametro2)=>{
+               console.log('função de callback emitida pelo componente filho') 
+               console.log(parametro1, parametro2)
+         })
+      }
+   }*/
 };
 </script>
 
