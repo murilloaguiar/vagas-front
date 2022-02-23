@@ -11,7 +11,9 @@
          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-         ...
+         <ul class="list-group">
+            <li class="list-group-item" v-for="(vaga, index) in vagas" :key="index">{{vaga}}</li>
+         </ul>
       </div>
    </div>
    
@@ -21,7 +23,31 @@
 
 <script>
 export default {
-   name: 'VagasFavoritas'
+   name: 'VagasFavoritas',
+
+   data: ()=>({
+      vagas: []
+   }),
+   
+   mounted(){
+      /*this.emitter.on('eventoGlobal1', parametro =>{
+         console.log('Componente VagasFavoritas: ', parametro)
+      })*/
+
+      this.emitter.on('favoritarVaga', titulo =>{
+         this.vagas.push(titulo)
+      })
+
+      this.emitter.on('desfavoritarVaga', titulo =>{
+         //recebe o índice do array para o conteúdo pesquisado
+         let indiceArray = this.vagas.indexOf(titulo)
+
+         //removendo a partir da posição deseja, x posições, nesse caso somente a posição desejada
+         if(indiceArray!==-1) this.vagas.splice(indiceArray,1)
+         
+         
+      }) 
+   }
 }
 </script>
 

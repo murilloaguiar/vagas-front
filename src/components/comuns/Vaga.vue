@@ -14,8 +14,9 @@
                <div>
                   
                   <div class="form-check form-switch">
-                     <input type="checkbox" class="form-check-input">
+                     <input type="checkbox" class="form-check-input" v-model="favoritada">
                      <label for="" class="form-check">Favoritar</label>
+                     <!-- <button class="btn btn-danger" @click="dispararEventoComMitt">Teste</button> -->
                   </div>
 
                </div>
@@ -40,6 +41,20 @@
 <script>
    export default {
       name: 'Vaga',
+
+      data:()=>({
+         favoritada: false
+      }),
+
+      watch: {
+         favoritada(valorNovo){
+            if (valorNovo) {
+               this.emitter.emit('favoritarVaga', this.titulo)
+            } else {
+               this.emitter.emit('desfavoritarVaga', this.titulo)
+            }
+         }
+      },
 
       //props:['tituloVagaTeste','descricaoVaga','salario','modalidade','tipo','publicacao'],
 
@@ -103,6 +118,12 @@
             let dataPublicacao = new Date(this.publicacao)
             return dataPublicacao.toLocaleDateString('pt-BR')
          }
+      },
+
+      methods:{
+         /*dispararEventoComMitt(){
+            this.emitter.emit('eventoGlobal1','Teste Caputura Evento Parâmetro')
+         }*/
       }
 
       /*created(){
