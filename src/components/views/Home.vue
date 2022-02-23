@@ -11,24 +11,52 @@
 
       </div>
 
-      <div class="row mt-5" v-for="(vaga,index) in vagas" :key="index">
+      <!-- <div class="row mt-5" v-for="(vaga,index) in vagas" :key="index">
 
          <div class="col">
             
-            <!-- <vaga 
+            <vaga 
                :titulo-vaga-teste="vaga.titulo"
                :descricao-vaga="vaga.descricao"
                :salario="vaga.salario"
                :modalidade="vaga.modalidade"
                :tipo="vaga.tipo"
                :publicacao="vaga.publicacao"
-            /> -->
+            /> 
 
             <vaga v-bind="vaga" />
 
-         </div>
+         </div>   
 
-      </div>
+      </div>-->
+
+      <!-- <lista-vagas v-slot:default="slotProps">
+         {{slotProps.vagas}}
+         <div v-for="(vaga, index) in slotProps.vagas" :key="index">
+            <h4>{{vaga.titulo}}</h4>
+            <p>{{vaga.descricao}}</p>
+            <hr>
+         </div>
+      </lista-vagas> -->
+
+      <lista-vagas>
+         
+         <!-- <template v-slot:titulo="slotProps">
+
+            {{slotProps}}
+         </template>
+
+         <template v-slot:default="slotProps">
+
+            {{slotProps}}
+         </template>
+
+         <template v-slot:rodape="slotProps">
+
+            {{slotProps}}
+         </template> -->
+
+      </lista-vagas>
 
       <div class="row mt-5">
 
@@ -60,22 +88,23 @@
 <script>
 
    import Indicador from '@/components/comuns/Indicador.vue'
+   import ListaVagas from '@/components/comuns/ListaVagas.vue'
    import PesquisarVaga from '@/components/comuns/PesquisarVaga.vue'
-   import Vaga from '@/components/comuns/Vaga.vue'
+
 
 
    export default {
       name: 'Home',
 
       components:{
-         PesquisarVaga,
          Indicador,
-         Vaga
+         ListaVagas,
+         PesquisarVaga
       },
 
       data: ()=>({
          usuariosOnline: 0,
-         vagas: []
+
       }),
 
       methods:{
@@ -84,20 +113,7 @@
          }
       },
 
-      mounted(){
-         this.emitter.on('filtrarVagas', vaga=>{
-            const vagas = JSON.parse(localStorage.getItem('vagas'))
-
-            //recuperando os registros de um array com base em alguma condição, criando um novo array filtrado
-            this.vagas = vagas.filter(registro => registro.titulo.toLowerCase().includes(vaga.titulo.toLowerCase()))
-         })
-      },
       
-      activated(){ //não pode ser o mounted porque o componente é montado apenas uma vez, após isso ele fica inativo ou ativo por causa do keep alive
-
-         this.vagas = JSON.parse(localStorage.getItem('vagas'))
-         //array de objetos
-      },
 
       created(){
          setInterval(this.getUsuariosOnline, 2000);
