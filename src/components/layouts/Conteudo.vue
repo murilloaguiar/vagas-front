@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1>{{titulo}}</h1>
+      
       <!-- <button @click="atualizarComponente()">Atualizar</button>
       <button @click="conteudo = 'home'">Home</button>
       <button @click="conteudo = 'publicar-vaga'">Publicar Vaga</button>
